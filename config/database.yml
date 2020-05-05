@@ -19,7 +19,10 @@ default: &default
 
 development:
   <<: *default
-  database: E_commerce_development
+  database: E_commerce
+  host: localhost
+  username: root
+  password: kokowawa
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
