@@ -28,6 +28,7 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'resque', '~> 2.0'
 gem 'highcharts-rails', '~> 6.0', '>= 6.0.3'
 gem 'chartjs-ror', '~> 3.6', '>= 3.6.4'
+gem 'attach', '~> 1.0.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

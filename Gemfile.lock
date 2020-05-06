@@ -71,6 +71,8 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     arbre (1.2.1)
       activesupport (>= 3.0.0)
+    attach (1.0.5)
+      records_manipulator (>= 1.0, < 2.0)
     autoprefixer-rails (9.7.6)
       execjs
     bcrypt (3.1.13)
@@ -215,6 +217,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    records_manipulator (1.0.1)
     redis (4.1.4)
     redis-namespace (1.7.0)
       redis (>= 3.0.4)
@@ -297,6 +300,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin (~> 2.7)
+  attach (~> 1.0.1)
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.4.1)
   byebug
