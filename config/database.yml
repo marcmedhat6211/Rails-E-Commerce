@@ -19,10 +19,10 @@ default: &default
 
 development:
   <<: *default
-  database: e_commerce_rails
+  database: E_commerce_development
   host: localhost
-  username: root
-  password: agh1993agh
+  # username: root
+  # password: agh1993agh
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -55,3 +55,4 @@ production:
   database: E_commerce_production
   username: E_commerce
   password: <%= ENV['E_COMMERCE_DATABASE_PASSWORD'] %>
+  
