@@ -24,12 +24,15 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.2'
 gem 'cancancan', '~> 3.1'
 gem 'activeadmin', '~> 2.7'
-gem 'bootstrap', '~> 4.4.1'
+ 
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
 gem 'resque', '~> 2.0'
 gem 'highcharts-rails', '~> 6.0', '>= 6.0.3'
 gem 'chartjs-ror', '~> 3.6', '>= 3.6.4'
 gem 'attach', '~> 1.0.1'
-gem 'seed-fu'
+gem 'carrierwave', '~> 2.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

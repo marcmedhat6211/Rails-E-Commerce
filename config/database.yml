@@ -19,7 +19,7 @@ default: &default
 
 development:
   <<: *default
-  database: E_commerce
+  database: E_commerce_development
   host: localhost
   username: linda
   password: Java123$
@@ -55,3 +55,4 @@ production:
   database: E_commerce_production
   username: E_commerce
   password: <%= ENV['E_COMMERCE_DATABASE_PASSWORD'] %>
+  
