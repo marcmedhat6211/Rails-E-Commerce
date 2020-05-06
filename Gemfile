@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
@@ -29,7 +29,7 @@ gem 'resque', '~> 2.0'
 gem 'highcharts-rails', '~> 6.0', '>= 6.0.3'
 gem 'chartjs-ror', '~> 3.6', '>= 3.6.4'
 gem 'attach', '~> 1.0.1'
-
+gem 'seed-fu'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

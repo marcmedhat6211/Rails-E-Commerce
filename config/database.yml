@@ -13,23 +13,23 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
+  username: linda
+  password: Java123$
   socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
   database: E_commerce
   host: localhost
-  username: root
-  password: kokowawa
+  username: linda
+  password: Java123$
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: E_commerce_test
+  database: E_commerce
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
