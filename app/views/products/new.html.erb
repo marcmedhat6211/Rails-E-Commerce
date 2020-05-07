@@ -21,12 +21,12 @@
 
     <p>
         <%= form.label :Category %><br>
-        <%= form.collection_select(:product, Category.all, :id, :name) %>
+        <%= form.collection_select(:category_id, Category.all, :id, :name) %>
     </p>
 
     <p>
         <%= form.label :Brand %><br>
-        <%= form.collection_select(:brand, Brand.all, :id, :name) %>
+        <%= form.collection_select(:brand_id, Brand.all, :id, :name) %>
     </p>
 
     <p>
