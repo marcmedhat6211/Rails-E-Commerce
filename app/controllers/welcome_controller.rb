@@ -1,4 +1,8 @@
 class WelcomeController < ApplicationController
-  def index
-  end
+
+    def index
+       @categories = Category.all
+      @brands = Brand.all
+    end
+    
 end

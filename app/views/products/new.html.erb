@@ -1,35 +1,39 @@
-<%= form_with scope: :product, url: products_path, local: true do |form| %>    
-    <p>
-      <%= form.label :Product_Title %><br>
-      <%= form.text_field :title %>
-    </p>
+<div class="container">
+    <div class="col-sm-3">
+        <%= form_with scope: :product, url: products_path, local: true do |form| %>    
+            <p>
+            <%= form.label :Product_Title %><br>
+            <%= form.text_field :title %>
+            </p>
 
-    <p>
-        <%= form.label :Product_Description %><br>
-        <%= form.text_area :description %>
-    </p>
+            <p>
+                <%= form.label :Product_Description %><br>
+                <%= form.text_area :description %>
+            </p>
 
-    <p>
-        <%= form.label :Product_Price %><br>
-        <%= form.text_field :price %>
-    </p>
+            <p>
+                <%= form.label :Product_Price %><br>
+                <%= form.text_field :price %>
+            </p>
 
-    <p>
-        <%= form.label :Product_Stock_Quantity %><br>
-        <%= form.text_field :stock %>
-    </p>
+            <p>
+                <%= form.label :Product_Stock_Quantity %><br>
+                <%= form.text_field :stock %>
+            </p>
 
-    <p>
-        <%= form.label :Category %><br>
-        <%= form.collection_select(:category_id, Category.all, :id, :name) %>
-    </p>
+            <p>
+                <%= form.label :Category %><br>
+                <%= form.collection_select(:category_id, Category.all, :id, :name) %>
+            </p>
 
-    <p>
-        <%= form.label :Brand %><br>
-        <%= form.collection_select(:brand_id, Brand.all, :id, :name) %>
-    </p>
+            <p>
+                <%= form.label :Brand %><br>
+                <%= form.collection_select(:brand_id, Brand.all, :id, :name) %>
+            </p>
 
-    <p>
-      <%= form.submit %>
-    </p>
-<% end %>
+            <p>
+            <%= form.submit %>
+            </p>
+        <% end %>
+    </div>
+</div>
