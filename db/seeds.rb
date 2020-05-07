@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+
 5.times do |i|
     Brand.create(name: "brand ##{i}")
   end
@@ -25,18 +27,19 @@
   5.times do |i|
     Product.create(title: "product##{i}",description:"this is product description",price:"#{i}",stock:"#{i}")
   end
+  
 
 
 #     5.times do |i|
 
-    User.create(id:"5",name: "user_1",email:"mostafa@gmail.com",encrypted_password:'qi8H8R7OM4xMUNMPuRAZxlY',role:"buyer",
-    reset_password_token:'qi8H8R7OM4xMUNMPuRAZxlY')
+     User.create(id:"5",name: "user_1",email:"mostafa@gmail.com",encrypted_password:'qi8H8R7OM4xMUNMPuRAZxlY',role:"buyer",
+     reset_password_token:'qi8H8R7OM4xMUNMPuRAZxlY',avatar:"img.png")
  
   
-#     end
+    #  end
 
-#   5.times do |i|
-    Store.create(name: "store",summary:"store summary",user_id:"1")
-    # Store.create(name: "store",summary:"store summary",user_id:"2")
-#   end
+   5.times do |i|
+     Store.create(name: "store",summary:"store summary",user_id:"1")
+  
+   end
 
