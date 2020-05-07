@@ -5,6 +5,8 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.text :description
       t.decimal :price
       t.integer :stock
+      t.belongs_to :category
+      t.belongs_to :brand
 
       t.timestamps
     end

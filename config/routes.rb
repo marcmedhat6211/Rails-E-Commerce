@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+  root 'welcome#index'
+
+  ##CATEGORIES ROUTES##
+  resources :categories
+
+  ##BRANDS ROUTES##
+  resources :brands
+
+  ##PRODUCTS ROUTES##
+  resources :products
+
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
