@@ -262,7 +262,7 @@ a#scrollUp i {
     outline: medium none;
     padding-left: 10px;
     width: 155px;
-    background-image: url(../images/home/searchicon.png);
+    background-image: url(image_path("searchicon.png"));
     background-repeat: no-repeat;
     background-position: 130px;
 }
@@ -1417,13 +1417,17 @@ h2.title {
 #form {
     display: block;
     margin-bottom: 185px;
-    margin-top: 185px;
+    margin-top: 50px;
     overflow: hidden;
 }
 
-.login-form {}
+.login-form {
+    margin-left: 40%;
+}
 
-.signup-form {}
+.signup-form {
+    margin-left: 40%;
+}
 
 .login-form h2,
 .signup-form h2 {
@@ -1439,15 +1443,12 @@ h2.title {
     background: #F0F0E9;
     border: medium none;
     color: #696763;
-    display: block;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 300;
-    height: 40px;
     margin-bottom: 10px;
     outline: medium none;
     padding-left: 10px;
-    width: 100%;
 }
 
 .login-form form span {
@@ -1480,7 +1481,6 @@ h2.title {
 
 .login-form label input {
     border: medium none;
-    display: inline-block;
     height: 0;
     margin-bottom: 0;
     outline: medium none;
