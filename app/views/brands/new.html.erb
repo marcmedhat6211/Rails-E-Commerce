@@ -1,10 +1,17 @@
-<%= form_with scope: :brand, url: brands_path, local: true do |form| %>    
-    <p>
-      <%= form.label :Brand_Name %><br>
-      <%= form.text_field :name %>
-    </p>
-   
-    <p>
-      <%= form.submit %>
-    </p>
-<% end %>
+<div class="container">
+  <div class="col-sm-3">
+    <%= form_with scope: :brand, url: brands_path, local: true do |form| %>    
+        <p>
+          <%= form.label :Brand_Name %><br>
+          <%= form.text_field :name %>
+        </p>
+        <label class="btn btn-success">
+        Save brand
+        <span style="display:none;">
+            <%= form.submit %>
+        </span>
+    </label>
+    <% end %>
+    <%= link_to 'Back', brands_path %>
+  </div>
+</div>
