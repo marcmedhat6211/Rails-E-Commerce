@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   ##CATEGORIES ROUTES##
   resources :categories
 
+  ##STORES ROUTES##
+  resources :stores
+
   # Below for all other routes:
   devise_for :users
 end
