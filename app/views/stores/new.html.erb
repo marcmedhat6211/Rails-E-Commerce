@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="col-sm-3">
+        <%= form_with scope: :store, url: stores_path, local: true do |form| %>    
+            <p>
+              <%= form.label :Store_Name %><br>
+              <%= form.text_field :name %>
+            </p>
+
+            <p>
+                <%= form.label :Summary %><br>
+                <%= form.text_area :summary %>
+            </p>
+
+            <p>
+                <%= form.label :User %><br>
+                <%= form.collection_select(:user_id, User.all, :id, :name) %>
+            </p>
+          
+            <label class="btn btn-success">
+                Save store
+                <span style="display:none;">
+                    <%= form.submit %>
+                </span>
+            </label>
+        <% end %>
+
+        <%= link_to 'Back', stores_path %>
+    </div>
+</div>

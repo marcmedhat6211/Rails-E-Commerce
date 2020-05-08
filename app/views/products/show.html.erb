@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="col-sm-3">
+        <p>
+            <strong>Name:</strong>
+            <%= @product.title %>
+        </p>
+
+        <p>
+            <strong>Description:</strong>
+            <%= @product.description %>
+        </p>
+
+        <p>
+            <strong>Price:</strong>
+            <%= @product.price %>$
+        </p>
+
+        <p>
+            <strong>In-Stock quantity:</strong>
+            <%= @product.stock %>
+        </p>
+
+        <p>
+            <strong>Category:</strong>
+            <%= @product.category_id %>
+        </p>
+
+        <p>
+            <strong>Brand:</strong>
+            <%= @product.brand_id %>
+        </p>
+
+        <p>
+            <strong>Image:</strong>
+            <img id="avatar" src="<%= @product.avatar %>">
+        </p>
+
+        <%= link_to 'Back', products_path %>
+    </div>
+</div>
+<style>
+    img{
+        border-radius: 8px;
+        border-radius: 4px;
+        padding: 5px;
+        width: 150px;
+    }
+</style>

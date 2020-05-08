@@ -1,0 +1,17 @@
+<div class="container">
+        <%= link_to 'Add New category', new_category_path %>
+        <br>
+        <br>
+        <table class="table table-bordered">
+            <tr>
+            <th>Category Name</th>
+            <th>Action</th>
+            </tr>
+            <% @categories.each do |category| %>
+                <tr>
+                    <td><%= category.name %></td>
+                    <td><%= link_to 'Show', category_path(category) %></td>
+                </tr>
+            <% end %>
+        </table>
+</div>
