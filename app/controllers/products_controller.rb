@@ -2,6 +2,10 @@ class ProductsController < ApplicationController
 
     def index
         @products = Product.all
+        # @categories_name = @products.name
+        # @products.each do |p|
+        #     p.category_id.name
+        # end
     end
 
     def show
