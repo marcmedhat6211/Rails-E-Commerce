@@ -49,9 +49,13 @@ ActiveRecord::Schema.define(version: 2020_05_06_191659) do
     t.text "description"
     t.decimal "price", precision: 10
     t.integer "stock"
+    t.bigint "category_id"
+    t.bigint "brand_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.json "avatar", null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

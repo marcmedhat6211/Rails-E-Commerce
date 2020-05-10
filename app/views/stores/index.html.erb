@@ -1,0 +1,21 @@
+<div class="container">
+        <%= link_to 'Add New store', new_store_path %>
+        <br>
+        <br>
+        <table class="table table-bordered">
+            <tr>
+            <th>store Name</th>
+            <th>Summary</th>
+            <th>User</th>
+            <th>Action</th>
+            </tr>
+            <% @stores.each do |store| %>
+                <tr>
+                    <td><%= store.name %></td>
+                    <td><%= store.summary %></td>
+                    <td><%= store.user_id %></td>
+                    <td><%= link_to 'Show', store_path(store) %></td>
+                </tr>
+            <% end %>
+        </table>
+</div>

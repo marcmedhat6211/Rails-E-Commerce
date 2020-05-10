@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
-      mount_uploaders :avatars, AvatarUploader
+
+    has_many :brands
+    has_many :categories
+    mount_uploader :avatar, AvatarUploader
 
 end
