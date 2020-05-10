@@ -4,4 +4,5 @@ class Product < ApplicationRecord
     has_many :categories
     mount_uploader :avatar, AvatarUploader
 
+    
 end

@@ -49,13 +49,9 @@ ActiveRecord::Schema.define(version: 2020_05_06_191659) do
     t.text "description"
     t.decimal "price", precision: 10
     t.integer "stock"
-    t.bigint "category_id"
-    t.bigint "brand_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.json "avatar", null: false
-    t.index ["brand_id"], name: "index_products_on_brand_id"
-    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -73,10 +69,9 @@ ActiveRecord::Schema.define(version: 2020_05_06_191659) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6
+    t.datetime "updated_at", precision: 6
     t.string "avatar", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
