@@ -2,10 +2,6 @@ class ProductsController < ApplicationController
 
     def index
         @products = Product.all
-        # @categories_name = @products.name
-        # @products.each do |p|
-        #     p.category_id.name
-        # end
     end
 
     def show
@@ -16,7 +12,9 @@ class ProductsController < ApplicationController
     end
 
     def create
+        # load_and_authorize_resource
         @product = Product.new(product_params)
+        authorize! :create, @product
         @product.save
         redirect_to @product
     end

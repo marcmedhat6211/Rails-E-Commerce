@@ -14,7 +14,8 @@ class Ability
           can :manage, :dashboard
       end
       if user.seller_role?
-          can :manage, Order
+          can :update, Order
+          can :create, Product
       end
 
     # The first argument to `can` is the action you are giving the user
