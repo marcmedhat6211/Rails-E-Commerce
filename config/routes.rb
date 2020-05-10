@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'carts/index'
+  get 'cart/index'
   ##ADMIN ROUTE##
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
   ##CATEGORIES ROUTES##
   resources :categories
     
+  resources :carts
   ##PRODUCTS ROUTES##
   resources :products
   # get 'products/category_products'
