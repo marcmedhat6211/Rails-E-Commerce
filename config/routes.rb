@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   resources :carts
   ##PRODUCTS ROUTES##
   resources :products
+  # get 'products/category_products'
+  get ':controller(/:action(/:category_id))'
+  get ':controller(/:action(/:brand_id))'
 
   ##BRANDS ROUTES##
   resources :brands

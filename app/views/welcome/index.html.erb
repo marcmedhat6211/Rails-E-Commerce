@@ -8,7 +8,7 @@
           <% @categories.each do |cat|%>
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 class="panel-title"><a href="categories/<%= cat.id%>"><%= cat.name%></a></h4>
+                <h4 class="panel-title"> <%= link_to(cat.name,{ :controller => "products", :action => 'category_products',:category_id => cat.id}) %></h4>
               </div>
             </div>
             <%end%>
@@ -18,7 +18,7 @@
               <div class="brands-name">
               <% @brands.each do |brand| %>
                 <ul class="nav nav-pills nav-stacked">
-                  <li><a href=""><%= brand.name%></a></li>
+                  <li> <%= link_to(brand.name,{ :controller => "products", :action => 'brand_products',:brand_id => brand.id}) %></li>
                 </ul>
                 <% end %>
               </div>
