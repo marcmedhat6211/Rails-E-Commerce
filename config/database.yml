@@ -19,7 +19,7 @@ default: &default
 
 development:
   <<: *default
-  database: E_commerce_development
+  database: E_commerce
   host: localhost
   username: linda
   password: Java123$
