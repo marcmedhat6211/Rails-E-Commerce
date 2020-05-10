@@ -1,68 +1,77 @@
 <section>
-<div class="container">
-  <div class="row">
+  <div class="container">
+    <div class="row">
     <div class="col-sm-3">
-      <div class="left-sidebar">
-        <h2>Category</h2>
-        <% @categories.each do |cat|%>
-        <div class="panel-group category-products" id="accordian">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title"><a ><%= cat.name%></a></h4>
+        <div class="left-sidebar">
+          <h2>Category</h2>
+          <div class="panel-group category-products" id="accordian">
+          <% @categories.each do |cat|%>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title"> <%= link_to(cat.name,{ :controller => "products", :action => 'category_products',:category_id => cat.id}) %></h4>
+              </div>
             </div>
+            <%end%>
           </div>
-          <%end%>
-        </div>
-        <div class="brands_products">
-          <h2>Brands</h2>
-          <div class="brands-name">
-          <% @brands.each do |brand| %>
-            <ul class="nav nav-pills nav-stacked">
-              <li><a ><%= brand.name%></a></li>
-            </ul>
-             <% end %>
+          <div class="brands_products">
+              <h2>Brands</h2>
+              <div class="brands-name">
+              <% @brands.each do |brand| %>
+                <ul class="nav nav-pills nav-stacked">
+                  <li> <%= link_to(brand.name,{ :controller => "products", :action => 'brand_products',:brand_id => brand.id}) %></li>
+                </ul>
+                <% end %>
+              </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    <div class="col-sm-9 padding-right">
-      <div class="features_items">
-        <h2 class="title text-center">Products</h2>
-         <% @products.each do |product| %>
+      <div class="col-sm-9 padding-right">
+      <div class="features_items"><!--features_items-->
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-info" %>
+      <% end %>
+        <h2 class="title text-center">All Products</h2>
+        <% @products.each do |product| %>
         <div class="col-sm-4">
 
-           
           <div class="product-image-wrapper">
-         
+          
             <div class="single-products">
                 <div class="productinfo text-center">
-                  <img src="<%= product.avatar %>" alt=""  style="width: 18rem;"/>
+                  <img  src="<%= product.avatar %>"   width="100" height="250" alt=" "   />
                   <h2><%= product.price %>$</h2>
                   <p><%= product.title %></p>
-                  <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                   <% if not user_signed_in? %>
+                    <%= link_to(  new_user_session_path)  do  %>
+                    <h2 class="btn btn-default add-to-cart">Add to cart<h2>
+                       <%end %>
+                     <% else %> 
+                     <%= form_with scope: :cart, url: carts_path, local: true do |form| %>  
+                      <%= form.hidden_field :user_id, :value => current_user.id%>
+                      <%= form.hidden_field :product_id, :value => product.id%>    
+                          <label class="btn btn-default add-to-cart">
+                            Add to cart
+                            <span style="display:none;">                           
+                              <%= form.submit %>
+                              <%end%>
+                            </span>
+                          </label>
+                    <% end %> 
                 </div>
                 
-                <div class="product-overlay">
-                  <div class="overlay-content">
-                    <h2><%= product.price %>$</h2>
-                    <p><%= product.title %></p>
-                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                  </div>
-                </div>
             </div>
             <div class="choose">
               <ul class="nav nav-pills nav-justified">
-                <li><%= link_to 'More Details', welcome_path(product) %></li>
-                
+              <li><%= link_to 'More Details', welcome_path(product) %></li>
               </ul>
             </div>
+            
           </div>
-        </div>   
-        <% end %>   
+          
+        </div> 
+        <% end %>
+        </div><!--features_items-->
       </div>
-      
     </div>
   </div>
-</div>
 </section>

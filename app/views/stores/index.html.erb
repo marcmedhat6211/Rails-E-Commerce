@@ -13,7 +13,7 @@
                 <tr>
                     <td><%= store.name %></td>
                     <td><%= store.summary %></td>
-                    <td><%= store.user_id %></td>
+                    <td><%= store.user.name %></td>
                     <td><%= link_to 'Show', store_path(store) %></td>
                 </tr>
             <% end %>
