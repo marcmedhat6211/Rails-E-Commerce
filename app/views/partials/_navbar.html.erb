@@ -21,6 +21,16 @@
             <li>
               <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
             </li>
+            <li>
+              <% if current_user.admin_role? %>
+                <%= link_to 'Manage website', rails_admin_path %>
+              <% end %>
+            </li>
+            <li>
+              <% if can? :create, Product %>
+                <%= link_to 'Add New product', new_product_path %>
+              <% end %>
+            </li>
           <% else %>
           <li>
             <%= link_to(  new_user_session_path)  do  %>  
