@@ -27,6 +27,9 @@
       </div>
       <div class="col-sm-9 padding-right">
       <div class="features_items"><!--features_items-->
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-info" %>
+      <% end %>
         <h2 class="title text-center">All Products</h2>
         <% @products.each do |product| %>
         <div class="col-sm-4">
@@ -48,12 +51,11 @@
                       <%= form.hidden_field :product_id, :value => product.id%>    
                           <label class="btn btn-default add-to-cart">
                             Add to cart
-                          <span style="display:none;">
-                          
-                        <%= form.submit %>
-                        <%end%>
-                        </span>
-                     </label>
+                            <span style="display:none;">                           
+                              <%= form.submit %>
+                              <%end%>
+                            </span>
+                          </label>
                     <% end %> 
                 </div>
                 

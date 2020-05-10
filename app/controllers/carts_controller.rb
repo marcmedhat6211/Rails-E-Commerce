@@ -12,6 +12,7 @@ class CartsController < ApplicationController
       @cart = Cart.new(cart_params)
      if(!Cart.where(product_id: @cart.product_id).take)
          @cart.save
+         flash.alert = "Item added to cart"
      end
      redirect_back(fallback_location: root_path)
   end
