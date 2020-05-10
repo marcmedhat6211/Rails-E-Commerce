@@ -49,12 +49,25 @@
 								<span>
 									<span>US <%= @product.price %>$</span>
 									
-									<button type="button" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
-										Add to cart
-									</button>
+									 <% if not user_signed_in? %>
+                    <%= link_to(  new_user_session_path)  do  %>
+                    <h2 class="btn btn-default add-to-cart">Add to cart<h2>
+                       <%end %>
+                     <% else %> 
+                     <%= form_with scope: :cart, url: carts_path, local: true do |form| %>  
+                      <%= form.hidden_field :user_id, :value => current_user.id%>
+                      <%= form.hidden_field :product_id, :value => @product.id%>    
+                          <label class="btn btn-default add-to-cart">
+                            Add to cart
+                          <span style="display:none;">
+                          
+                        <%= form.submit %>
+                        <%end%>
+                        </span>
+                     </label>
+                    <% end %> 
 								</span>
-								<p><b>Availability: </b><%= @product.stock%></p>
+								<p><p>Availability: </p><%= @product.stock%></p>
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->
