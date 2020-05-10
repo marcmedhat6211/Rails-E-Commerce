@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
-
-    def index
+    
+     def index
         @products = Product.all
     end
-
+ 
     def show
         @product = Product.find(params[:id])
     end 
@@ -11,6 +11,16 @@ class ProductsController < ApplicationController
     def new       
     end
 
+    def category_products
+        @products = Product.where(category_id:  params[:category_id] )
+         
+    end 
+
+    def brand_products
+        @products = Product.where(brand_id:  params[:brand_id] )
+
+    end 
+    
     def create
         @product = Product.new(product_params)
         authorize! :create, @product, :message => "Only a seller can create a new product"

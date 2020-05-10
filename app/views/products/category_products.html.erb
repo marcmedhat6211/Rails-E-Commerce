@@ -3,31 +3,14 @@
     <div class="row">
     <div class="col-sm-3">
         <div class="left-sidebar">
-          <h2>Category</h2>
-          <div class="panel-group category-products" id="accordian">
-          <% @categories.each do |cat|%>
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title"> <%= link_to(cat.name,{ :controller => "products", :action => 'category_products',:category_id => cat.id}) %></h4>
-              </div>
-            </div>
-            <%end%>
-          </div>
-          <div class="brands_products">
-              <h2>Brands</h2>
-              <div class="brands-name">
-              <% @brands.each do |brand| %>
-                <ul class="nav nav-pills nav-stacked">
-                  <li> <%= link_to(brand.name,{ :controller => "products", :action => 'brand_products',:brand_id => brand.id}) %></li>
-                </ul>
-                <% end %>
-              </div>
-          </div>
+          <h2><a href="/welcome"> Home</a></h2>
+           
+           
         </div>
       </div>
       <div class="col-sm-9 padding-right">
       <div class="features_items"><!--features_items-->
-        <h2 class="title text-center">All Products</h2>
+        <h2 class="title text-center"> Products</h2>
         <% @products.each do |product| %>
         <div class="col-sm-4">
 
