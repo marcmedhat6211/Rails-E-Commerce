@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
+  ##ADMIN ROUTE##
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  ##LANDING ROUTES##
   root 'welcome#index'
   get 'welcome/index'
   resources :welcome
+  
   # devise_for :users, path: 'user', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register'  }
   devise_scope :user do
     get "/user/sign_in" => "devise/sessions#new" # custom path to login/sign_in

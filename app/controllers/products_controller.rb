@@ -12,11 +12,10 @@ class ProductsController < ApplicationController
     end
 
     def create
-        # load_and_authorize_resource
         @product = Product.new(product_params)
-        authorize! :create, @product
+        authorize! :create, @product, :message => "Only a seller can create a new product"
         @product.save
-        redirect_to @product
+        render 'welcome/show'
     end
 
     private
