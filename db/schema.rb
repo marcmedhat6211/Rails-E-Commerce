@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_174203) do
+ActiveRecord::Schema.define(version: 2020_05_10_042349) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 2020_05_09_174203) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name", null: false
-    t.string "role", default: "buyer"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -87,6 +86,9 @@ ActiveRecord::Schema.define(version: 2020_05_09_174203) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "avatar", null: false
+    t.boolean "admin_role", default: false
+    t.boolean "seller_role", default: false
+    t.boolean "buyer_role", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

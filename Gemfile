@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.2'
 gem 'cancancan', '~> 3.1'
 gem 'activeadmin', '~> 2.7'
+gem 'rails_admin', '~> 2.0'
  
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'

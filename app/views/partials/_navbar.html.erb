@@ -23,10 +23,20 @@
             <li>
               <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
             </li>
+            <li>
+              <% if current_user.admin_role? %>
+                <%= link_to 'Manage website', rails_admin_path %>
+              <% end %>
+            </li>
+            <li>
+              <% if can? :create, Product %>
+                <%= link_to 'Add New product', new_product_path %>
+              <% end %>
+            </li>
           <% else %>
           <li>
-          <%= link_to(  new_user_session_path)  do  %>  
-            <i class="fa fa-lock"></i>  Login
+            <%= link_to(  new_user_session_path)  do  %>  
+              <i class="fa fa-lock"></i>  Login
             <% end %>
           </li>
           <% end %>
@@ -43,12 +53,7 @@
         <div class="col-sm-9">
 
         </div>
-        <div class="col-sm-3">
-          <div class="search_box pull-right">
-            <input type="text" placeholder="Search"/>
-          </div>
-        </div>
-      </div>
+        
     </div>
   </div><!--/header-bottom-->
 </header><!--/header-->

@@ -13,8 +13,9 @@ class ProductsController < ApplicationController
 
     def create
         @product = Product.new(product_params)
+        authorize! :create, @product, :message => "Only a seller can create a new product"
         @product.save
-        redirect_to @product
+        render 'welcome/show'
     end
 
     private

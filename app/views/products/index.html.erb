@@ -22,8 +22,10 @@
                         <td><%= product.description %></td>
                         <td><%= product.price %>$</td>
                         <td><%= product.stock %></td>
-                        <td><%= product.category_id %></td>
-                        <td><%= product.brand_id %></td>
+                        <td> 
+                        <%= Category.find(product.category_id).name %>
+                         </td>
+                        <td><%= Brand.find(product.brand_id).name %></td>
                         <td><img id="avatar" src="<%= product.avatar %>"></td>
                         <td><%= link_to 'Show', product_path(product) %></td>
                     </tr>
