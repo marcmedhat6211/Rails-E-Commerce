@@ -11,10 +11,13 @@ class CartsController < ApplicationController
   def create
       @cart = Cart.new(cart_params)
      if(!Cart.where(product_id: @cart.product_id).take)
-         @cart.save
-         flash.alert = "Item added to cart"
+          @cart.save
+          flash[:alert] = "Item added to cart"
+          redirect_back(fallback_location: root_path)
+     else
+          flash[:alert] = "Item already exists in the cart"
+          redirect_back(fallback_location: root_path)
      end
-     redirect_back(fallback_location: root_path)
   end
 
   def destroy
