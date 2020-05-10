@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'carts/index'
+  get 'cart/index'
   root 'welcome#index'
   get 'welcome/index'
   resources :welcome
@@ -9,7 +11,7 @@ Rails.application.routes.draw do
     get "/user/sign_up" => "devise/registrations#new", as: "new_user_registration" # custom path to sign_up/registration
   end
     
-
+  resources :carts
   ##PRODUCTS ROUTES##
   resources :products
 
