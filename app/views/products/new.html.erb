@@ -1,6 +1,7 @@
 <div class="container">
     <div class="col-sm-3">
-        <%= form_with scope: :product, url: products_path, local: true do |form| %>    
+        <%= form_with scope: :product, url: products_path, local: true do |form| %>
+
             <p>
             <%= form.label :Product_Title %><br>
             <%= form.text_field :title %>

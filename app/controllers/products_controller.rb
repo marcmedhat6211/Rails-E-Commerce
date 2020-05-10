@@ -12,7 +12,9 @@ class ProductsController < ApplicationController
     end
 
     def create
+        # load_and_authorize_resource
         @product = Product.new(product_params)
+        authorize! :create, @product
         @product.save
         redirect_to @product
     end
