@@ -15,7 +15,6 @@
           <ul class="nav navbar-nav">
           <% if user_signed_in? %>
             <li><a href=""><i class="fa fa-user"></i> Account</a></li>
-            <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
             <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
             <li>
              <%= link_to "Cart", carts_path(@product) %>

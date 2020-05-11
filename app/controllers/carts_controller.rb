@@ -23,7 +23,7 @@ class CartsController < ApplicationController
   def destroy
      @cart = Cart.find(params[:id])
      @cart.destroy
-    redirect_back(fallback_location: cart_path)
+     redirect_back(fallback_location: cart_path)
   end
   
    private
