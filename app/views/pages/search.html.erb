@@ -66,10 +66,27 @@
             </select>
           </form>
 
-        <!-- <input type="text" id="myInput" onkeyup="filterByCategory()" placeholder="filter by category.."> -->
-        <!-- <input type="text" id="brandInput" onkeyup="filterByBrand()" placeholder="filter by brand.."> -->
-    </div>
+<br>
+          <form id="priceForm">
+            <div>
+              <label for="fromPrice"></label>
+              <input type="text" id="fromPrice" name="fromPrice" placeholder="Price from" >
+            </div>
     
+            <div>
+              <label for="ToPrice"></label>
+              <input type="text" id="toPrice" name="ToPrice" placeholder="Price to" >
+            </div>
+            <br>
+            <button type="button" onclick="filterByPriceRange()">Filter by Price</button>
+          </form>
+        <!-- <input type="text" id="brandInput" onkeyup="filterByBrand()" placeholder="filter by brand.."> -->
+        <br>
+    </div>
+    <button type="button" onclick="resetFilters()">Reset Filters</button>
+    <div>
+
+    </div>
     <br>
     <table id="myTable">
         <tr>
@@ -110,7 +127,6 @@
     populateBrandsDropDown();
 })();
 
-
 function GetSelectedText(selected) {
         var selectedText = selected.options[selected.selectedIndex].innerHTML;
         // var selectedValue = ddlFruits.value;
@@ -122,7 +138,7 @@ function GetSelectedText(selected) {
         var selectedBrand = brand.options[brand.selectedIndex].innerHTML;
         // var selectedValue = ddlFruits.value;
         filterBrands(selectedBrand);
-        return selectedText;
+        return selectedBrand;
     }
 
     
@@ -166,6 +182,7 @@ function getCategories(){
         categories.push(td.textContent || td.innerText)
     }
   }
+  categories = [...new Set(categories)]
   console.log({categories});
   return categories;
 }
@@ -182,6 +199,7 @@ function getBrands(){
         brands.push(td.textContent || td.innerText)
     }
   }
+  brands = [...new Set(brands)]
   console.log({brands});
   return brands;
 }
@@ -197,13 +215,38 @@ function filter(text) {
   for (i = 0; i < tr.length; i++) {
           td = tr[i].getElementsByTagName("td")[3]; // desc is at index 2    
           if (td) {
-            console.log(td.textContent);
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
+            if(tr[i].style.display != "none"){
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
+            }
+    }
+  }
+}
+
+
+function filterByPriceRange() {
+  var table, tr, td, i, txtValue;
+  let fromPrice = document.getElementById("fromPrice").value ? Number(document.getElementById("fromPrice").value) : 0 ;
+  let toPrice = document.getElementById("toPrice").value ? Number(document.getElementById("toPrice").value) : 1000000;
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[5]; // price for 5    
+          if (td) {
+            if(tr[i].style.display != "none"){
+                  txtValue = td.textContent || td.innerText;
+                  txtValue = Number(txtValue);
+                  if (txtValue >= fromPrice && txtValue <= toPrice) {
+                    tr[i].style.display = "";
+                  } else {
+                    tr[i].style.display = "none";
+                  }
+            }
     }
   }
 }
@@ -219,14 +262,15 @@ function filterBrands(text) {
   for (i = 0; i < tr.length; i++) {
           td = tr[i].getElementsByTagName("td")[4]; // desc is at index 2    
           if (td) {
-            console.log(td.textContent);
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
+            if(tr[i].style.display != "none"){
+                txtValue = td.textContent || td.innerText;
+                if ( txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
+              }
+          }
   }
 }
 
@@ -241,36 +285,54 @@ function filterByCategory() {
   for (i = 0; i < tr.length; i++) {
           td = tr[i].getElementsByTagName("td")[3]; // desc is at index 2    
           if (td) {
-            console.log(td.textContent);
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            if(tr[i].style.display != "none"){
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
+            }
+    }
+  }
+}
+
+// function filterByBrand() {
+
+// var input, filter, table, tr, td, i, txtValue;
+// input = document.getElementById("brandInput");
+// filter = input.value.toUpperCase();
+// table = document.getElementById("myTable");
+// tr = table.getElementsByTagName("tr");
+
+// for (i = 0; i < tr.length; i++) {
+//         td = tr[i].getElementsByTagName("td")[4]; // desc is at index 2    
+//   if (td) {
+//     txtValue = td.textContent || td.innerText;
+//     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//       tr[i].style.display = "";
+//     } else {
+//       tr[i].style.display = "none";
+//     }
+//   }
+// }
+// }
+
+
+function resetFilters() {
+    var input, filter, table, tr, td, i, txtValue;
+    document.getElementById("selectNumber").selectedIndex = 0;
+    document.getElementById("selectBrand").selectedIndex = 0;
+    document.getElementById("priceForm").reset();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[3]; // desc is at index 2    
+          if (td) {
         tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
     }
   }
-}
-
-function filterByBrand() {
-
-var input, filter, table, tr, td, i, txtValue;
-input = document.getElementById("brandInput");
-filter = input.value.toUpperCase();
-table = document.getElementById("myTable");
-tr = table.getElementsByTagName("tr");
-
-for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[4]; // desc is at index 2    
-  if (td) {
-    txtValue = td.textContent || td.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      tr[i].style.display = "";
-    } else {
-      tr[i].style.display = "none";
-    }
-  }
-}
 }
 
 </script>
