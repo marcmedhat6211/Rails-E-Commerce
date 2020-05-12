@@ -11,7 +11,8 @@ group :production do
 end
 
 group :development do
-  gem 'mysql2', '>= 0.4.4'
+  # gem 'mysql2', '>= 0.4.4'
+  gem 'mysql2', '~> 0.3.18'
 end
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
