@@ -14,6 +14,7 @@
         <div class="shop-menu clearfix pull-right">
           <ul class="nav navbar-nav">
           <% if user_signed_in? %>
+            <li><%= link_to 'Home', '/welcome'  %></li>
             <li><a href="users/edit"><i class="fa fa-user"></i> Account</a></li>
             <li>
               <a href="#"><i class="fa fa-user"></i>Checkout</a>
