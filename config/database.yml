@@ -59,7 +59,16 @@ production:
   # database: E_commerce_production
   # username: E_commerce
   # password: <%= ENV['E_COMMERCE_DATABASE_PASSWORD'] %>
-  database: E_commerce
-  host: localhost
+  # database: E_commerce
+  # host: localhost
+  # username: root
+  # password: kokowawa
+
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: E_commerce_production
+  pool: 5
   username: root
   password: kokowawa
+  socket: /tmp/mysql.sock
