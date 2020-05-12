@@ -9,7 +9,7 @@ class Ability
       user ||= User.new # guest user (not logged in)
       # can :manage, :all
       if user.admin_role?
-          # can :manage, :all
+          can :manage, :all
           can :manage, Store
           can :manage, Category
           can :manage, Brand
