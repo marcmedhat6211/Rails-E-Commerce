@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'carts/index'
   get 'cart/index'
+
   ##ADMIN ROUTE##
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
@@ -15,13 +16,20 @@ Rails.application.routes.draw do
     get "/user/sign_in" => "devise/sessions#new" # custom path to login/sign_in
     get "/user/sign_up" => "devise/registrations#new", as: "new_user_registration" # custom path to sign_up/registration
   end
+
+  ##ORDERS ROUTES##
+  resources :orders
   
   ##CATEGORIES ROUTES##
   resources :categories
-    
+
+  ##CARTS ROUTES##  
   resources :carts
+  # delete 'carts/checkout' 
+
   ##PRODUCTS ROUTES##
   resources :products
+  
   # get 'products/category_products'
   get ':controller(/:action(/:category_id))'
   get ':controller(/:action(/:brand_id))'
@@ -32,8 +40,6 @@ Rails.application.routes.draw do
   ##STORES ROUTES##
   resources :stores
   
-  ##ORDERS ROUTES##
-  resources :orders
 
   # Below for all other routes:
   devise_for :users

@@ -25,6 +25,12 @@ class CartsController < ApplicationController
      @cart.destroy
      redirect_back(fallback_location: cart_path)
   end
+
+  def checkout
+    @carts = Cart.all
+    @carts.destroy
+    redirect_back(fallback_location: cart_path) 
+  end
   
    private
         def cart_params

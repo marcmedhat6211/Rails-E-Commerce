@@ -1,0 +1,19 @@
+<div class="container">
+        <br>
+        <br>
+        <table class="table table-bordered">
+            <tr>
+            <th>User</th>
+            <th>Store</th>
+            <th>Status</th>
+            </tr>
+                <tr>
+                    <td><%= @order.user.name %></td>
+                    <td><%= @order.store.name %></td>
+                    <td><%= @order.status %></td>
+                </tr>
+        </table>          
+        <label class="btn btn-primary">
+            <%= link_to 'Home', '/welcome'  %>
+        </label>
+</div>

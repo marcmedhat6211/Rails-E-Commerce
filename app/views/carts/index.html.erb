@@ -47,11 +47,17 @@
 					<%= form.hidden_field :status, :value => 'pending' %>
 					<%= form.hidden_field :user_id, :value => current_user.id %>
 					<%= form.hidden_field :store_id, :value => Store.joins("inner join products on stores.user_id = products.user_id").select("id").ids %>			
-					
-							<%= form.submit %>
+					</div>
+					</div>
+					<div class="container text-align:center">
+						<label class="btn btn-success">
+						Create order
+						<span style="display:none;">
+						<%= form.submit %>
+						</span>
+						</label>
+					</div>						
 				<% end %>	
-			</div>
-		</div>
 </section> <!--/#cart_items-->
 
 	

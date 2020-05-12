@@ -14,8 +14,9 @@
         <div class="shop-menu clearfix pull-right">
           <ul class="nav navbar-nav">
           <% if user_signed_in? %>
-            <li><a href=""><i class="fa fa-user"></i> Account</a></li>
-            <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+            <li><a href="users/edit"><i class="fa fa-user"></i> Account</a></li>
+            <li>
+              <a href="#"><i class="fa fa-user"></i>Checkout</a>
             <li>
              <%= link_to "Cart", carts_path(@product) %>
             </li>
@@ -52,7 +53,21 @@
         <div class="col-sm-9">
 
         </div>
+        <div class="col-sm-3">
+        <%= form_tag(search_page_path, :method => "get",   
+        class: 'navbar-form navbar-left') do %>  
+      <div class="search_box pull-right">  
+        <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+      </div>  
+    <% end %>
         
+    
+    
+    <!-- add form tag with action that renders to "pages/search" method get -->
+      <!-- <input type="text" name="search_name" >
+      <input type="submit" value="Search for product">
+    </form> -->
+        </div>
     </div>
   </div><!--/header-bottom-->
 </header><!--/header-->
