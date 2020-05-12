@@ -1,8 +1,272 @@
-<h3>Search Result</h3>  
 
-    <% @results.each do |result| %>  
-        <%= result.title %><br>  
-    <% end %>
+<style>
+   #myInput {
+  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#brandInput {
+  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myTable {
+  border-collapse: collapse; /* Collapse borders */
+  width: 100%; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+}
+
+#myTable th, #myTable td {
+  text-align: left; /* Left-align text */
+  padding: 12px; /* Add padding */
+}
+
+#myTable tr {
+  /* Add a bottom border to all table rows */
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  /* Add a grey background color to the table header and on hover */
+  background-color: #f1f1f1;
+}
+    </style>
 
 
-   
+
+<div style="width: 70%;margin: 0 auto;">
+    <h3 style="text-align: center;">Search Result</h3>  
+    <br>
+    
+    <!-- <div id="wrapper"></div> -->
+    <br>
+    <div>
+        <form id="myForm">
+            <select id="selectNumber" onchange="GetSelectedText(this)">
+              <option>Filter by category</option>
+            </select>
+          </form>
+<br>
+          <form id="myForm">
+            <select id="selectBrand" onchange="GetSelectedBrand(this)">
+              <option>Filter by brand</option>
+            </select>
+          </form>
+
+        <!-- <input type="text" id="myInput" onkeyup="filterByCategory()" placeholder="filter by category.."> -->
+        <!-- <input type="text" id="brandInput" onkeyup="filterByBrand()" placeholder="filter by brand.."> -->
+    </div>
+    
+    <br>
+    <table id="myTable">
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>desc</th>
+            <th>category</th>
+            <th>brand</th>
+            <th>price</th>
+            <th>stock</th>
+            <th>Image</th>
+          </tr>
+      <tr>
+        <% @results.each do |result| %>  
+        <tr>
+        <td><%= result.id %></td>
+        <td><%= result.title %></td>
+        <td><%= result.description %></td>
+        <td><%= Category.find(result.category_id).name %></td>
+        <td><%= Brand.find(result.brand_id).name %></td>
+        <td><%= result.price %></td>
+        <td><%= result.stock %></td>
+        <td> <img style="width: 70px;height: 70px;" src="<%= result.avatar %>" alt=""></td>
+      </tr> 
+      <% end %>
+    </table> 
+</div>
+ 
+
+    <script>
+
+(function() {
+    populateCategoriesDropDown();
+    populateBrandsDropDown();
+})();
+
+
+function GetSelectedText(selected) {
+        var selectedText = selected.options[selected.selectedIndex].innerHTML;
+        // var selectedValue = ddlFruits.value;
+        filter(selectedText);
+        return selectedText;
+    }
+
+    function GetSelectedBrand(brand) {
+        var selectedBrand = brand.options[brand.selectedIndex].innerHTML;
+        // var selectedValue = ddlFruits.value;
+        filterBrands(selectedBrand);
+        return selectedText;
+    }
+
+    
+function populateCategoriesDropDown() {
+    var categories = getCategories();
+
+    var select = document.getElementById("selectNumber"); 
+
+for(var i = 0; i < categories.length; i++) {
+    var opt = categories[i];
+    var el = document.createElement("option");
+    el.textContent = opt;
+    el.value = opt;
+    select.appendChild(el);
+}
+}
+
+function populateBrandsDropDown() {
+    var brands = getBrands();
+
+    var select = document.getElementById("selectBrand"); 
+
+for(var i = 0; i < brands.length; i++) {
+    var opt = brands[i];
+    var el = document.createElement("option");
+    el.textContent = opt;
+    el.value = opt;
+    select.appendChild(el);
+}
+}
+
+function getCategories(){
+    let categories = [];
+    var table, tr, td, i, txtValue;
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[3];
+    if(td) {
+        categories.push(td.textContent || td.innerText)
+    }
+  }
+  console.log({categories});
+  return categories;
+}
+
+function getBrands(){
+    let brands = [];
+    var table, tr, td, i, txtValue;
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[4];
+    if(td) {
+        brands.push(td.textContent || td.innerText)
+    }
+  }
+  console.log({brands});
+  return brands;
+}
+
+
+function filter(text) {
+    var input, filter, table, tr, td, i, txtValue;
+//   input = document.getElementById("myInput");
+  filter = text.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[3]; // desc is at index 2    
+          if (td) {
+            console.log(td.textContent);
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+
+function filterBrands(text) {
+    var input, filter, table, tr, td, i, txtValue;
+//   input = document.getElementById("myInput");
+  filter = text.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[4]; // desc is at index 2    
+          if (td) {
+            console.log(td.textContent);
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+function filterByCategory() {
+
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[3]; // desc is at index 2    
+          if (td) {
+            console.log(td.textContent);
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
+function filterByBrand() {
+
+var input, filter, table, tr, td, i, txtValue;
+input = document.getElementById("brandInput");
+filter = input.value.toUpperCase();
+table = document.getElementById("myTable");
+tr = table.getElementsByTagName("tr");
+
+for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[4]; // desc is at index 2    
+  if (td) {
+    txtValue = td.textContent || td.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      tr[i].style.display = "";
+    } else {
+      tr[i].style.display = "none";
+    }
+  }
+}
+}
+
+</script>
