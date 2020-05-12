@@ -21,8 +21,8 @@ development:
   <<: *default
   database: E_commerce
   host: localhost
-  username: linda
-  password: Java123$
+  username: root
+  password: kokowawa
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -31,8 +31,8 @@ test:
   <<: *default
   database: E_commerce
   host: localhost
-  username: linda
-  password: Java123$
+  username: root
+  password: kokowawa
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
