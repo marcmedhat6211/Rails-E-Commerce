@@ -18,41 +18,40 @@
 						</tr>
 					</thead>
 					<tbody>
-					    <% @carts.each do |cart|%>
-					     	<tr>
-
-							
-                           
-							<td class="cart_description">
-								<h4><a href=""></a> <%=cart.product.title%></h4>
-							</td>
-							<td class="cart_price">
-								<p>$<%=cart.product.price%></p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-		
-									<input class="cart_quantity_input" type="number" name="quantity"  size="2" min="1" max="<%=cart.product.stock%>">
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price">
-								</p>
-							</td>
-							<td class="cart_delete">
-							<%= link_to 'delete', cart, :confirm => 'Are you sure?',
-                                     :method => :delete %></td>
-  						
-							
-						</tr>
-
-						<%end%>
-						
+						<% @carts.each do |cart|%>
+							<% if cart.user_id == current_user.id %>
+								<tr> 
+									<td class="cart_description">
+										<h4><a href=""></a> <%=cart.product.title%></h4>
+									</td>
+									<td class="cart_price">
+										<p>$<%=cart.product.price%></p>
+									</td>
+									<td class="cart_quantity">
+										<div class="cart_quantity_button">
+											<input class="cart_quantity_input" type="number" name="quantity"  size="2" min="1" max="<%=cart.product.stock%>">
+										</div>
+									</td>
+									<td class="cart_total">
+										<p class="cart_total_price"></p>
+									</td>
+									<td class="cart_delete">
+										<%= link_to 'delete', cart, :confirm => 'Are you sure?',:method => :delete %>
+									</td>
+								</tr>
+							<% end %>
+						<% end %>	
 					</tbody>
 				</table>
+				<%= form_with scope: :order, url: orders_path, local: true do |form| %>   
+					<%= form.hidden_field :status, :value => 'pending' %>
+					<%= form.hidden_field :user_id, :value => current_user.id %>
+					<%= form.hidden_field :store_id, :value => Store.joins("inner join products on stores.user_id = products.user_id").select("id").ids %>			
+					
+							<%= form.submit %>
+				<% end %>	
 			</div>
 		</div>
-	
-	</section> <!--/#cart_items-->
+</section> <!--/#cart_items-->
 
 	

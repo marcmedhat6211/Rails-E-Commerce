@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
     
     def create
         @product = Product.new(product_params)
+        @product.user_id = current_user.id if current_user
         authorize! :create, @product, :message => "Only a seller can create a new product"
         @product.save
         render 'welcome/show'

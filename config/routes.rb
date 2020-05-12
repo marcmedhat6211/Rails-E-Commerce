@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   ##STORES ROUTES##
   resources :stores
   
+  ##ORDERS ROUTES##
+  resources :orders
 
   # Below for all other routes:
   devise_for :users
